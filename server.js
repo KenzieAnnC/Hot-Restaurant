@@ -15,7 +15,12 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname));
 
 //establishes the arrays
-var tables = [];
+var tables = [{
+    customerName: "Barb",
+    customerEmail: "barb@justice4barb.com",
+    customerID: "deadNotGone",
+    phoneNumber: "911-why-barb"
+}];
 var waitList = [];
 
 // Basic route that sends the user first to the AJAX Page
