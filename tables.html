@@ -1,30 +1,42 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Tables Page</title>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	 crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+	 crossorigin="anonymous"></script>
 
 </head>
+
 <body background="hawt.jpg">
 
 
 	<div class="container">
 
 		<div class="jumbotron">
-            <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Hot Restaurant</h1>
-            <p class="lead text-center">Get your hot wings and hot dogs!</p>
+			<h1 class="text-center">
+				<span class="glyphicon glyphicon-fire"></span> Hot Restaurant</h1>
+			<p class="lead text-center">Get your hot wings and hot dogs!</p>
 			<hr>
 			<h2 class="text-center">Current Reservations and Waiting List</h2>
 			<br>
 
 			<div class="text-center">
-				<a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
-				<a href="/"><button type="button" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-home"></span></button></a>
+				<a href="/reserve">
+					<button type="button" class="btn btn-lg btn-danger">
+						<span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button>
+				</a>
+				<a href="/">
+					<button type="button" class="btn btn-lg btn-info">
+						<span class="glyphicon glyphicon-home"></span>
+					</button>
+				</a>
 			</div>
 		</div>
 
@@ -33,7 +45,9 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h4 class="panel-title"><b>Current Reservations</b></h4>
+						<h4 class="panel-title">
+							<b>Current Reservations</b>
+						</h4>
 					</div>
 					<div class="panel-body" id="bookedTables">
 					</div>
@@ -41,7 +55,9 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h4 class="panel-title"><b>Waiting List</b></h4>
+						<h4 class="panel-title">
+							<b>Waiting List</b>
+						</h4>
 					</div>
 					<div class="panel-body" id="waitingList">
 					</div>
@@ -50,7 +66,44 @@
 		</div>
 
 
-	
+
 	</div>
 
+	<script type="text/javascript">	
+		function godDamnit() {
+			$.ajax({ url: "/api/tables", method: "GET" })
+				.done(function (data) {
+					console.log(data);
+					for (var i = 0; i < data.length; i++) {
+						var bookedTables = $("<div>");
+						var tableNumber = i + 1;
+						bookedTables.attr("id", "booked-tables" + i + 1);
+						bookedTables.append("<h2>" + tableNumber + "| " + data[i].customerID + "</h2>");
+						$("#bookedTables").append(bookedTables);
+						console.log(bookedTables);
+
+
+					}
+				});
+		}
+		godDamnit();
+
+		function goshDarnit() {
+			$.ajax({ url: "/api/waitlist", method: "GET" })
+				.done(function (data) {
+					console.log(data);
+					for (var i = 0; i < data.length; i++) {
+						var waitingTables = $("<div>");
+						var tableNumber = i + 1;
+						waitingTables.attr("id", "waiting-tables" + i + 1);
+						waitingTables.append("<h2>" + tableNumber + "| " + data[i].customerID + "</h2>");
+						$("#waitingList").append(waitingTables);
+						console.log(waitingTables);
+
+
+					}
+				});
+		}
+		goshDarnit();
+	</script>
 </body>
