@@ -20,6 +20,11 @@ var tables = [{
     customerEmail: "barb@justice4barb.com",
     customerID: "deadNotGone",
     phoneNumber: "911-why-barb"
+}, {
+    customerName: "11",
+    customerEmail: "bossB11tch@test.gov",
+    customerID: "leggoMyEggo",
+    phoneNumber: "Call me through the UpsideDown"
 }];
 var waitList = [];
 
