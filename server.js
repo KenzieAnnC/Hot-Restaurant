@@ -36,7 +36,7 @@ app.get("/api/tables", function (req, res) {
 });
 
 app.get("/api/waitlist", function (req, res) {
-    return res.json(waitlist);
+    return res.json(waitList);
 });
 
 // Create New Tables - takes in JSON input
