@@ -28,7 +28,7 @@ var tables = [{
 }, {
     customerName: "Hopper",
     customerEmail: "hippityHopper@test.gov",
-    customerID: "hopper",
+    customerID: "Hopper",
     phoneNumber: "8675309"
 }];
 var waitList = [];
