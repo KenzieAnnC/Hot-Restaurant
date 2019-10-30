@@ -25,6 +25,11 @@ var tables = [{
     customerEmail: "bossB11tch@test.gov",
     customerID: "leggoMyEggo",
     phoneNumber: "Call me through the UpsideDown"
+}, {
+    customerName: "Hopper",
+    customerEmail: "hippityHopper@test.gov",
+    customerID: "hopper",
+    phoneNumber: "8675309"
 }];
 var waitList = [];
 
